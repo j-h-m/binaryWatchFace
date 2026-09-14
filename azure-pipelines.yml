@@ -26,9 +26,9 @@ steps:
 # 2. Build the App bundle (AAB) or APK without running unit tests
 - task: Gradle@3
   inputs:
+    workingDirectory: './AndroidStudioProject'
     gradleWrapperFile: './AndroidStudioProject/gradlew'
     tasks: 'build'
-    options: '-p AndroidStudioProject'
     publishJUnitResults: false
 
 # # 3. Copy the generated AAB/APK to the Artifact Staging Directory
