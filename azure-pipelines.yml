@@ -12,22 +12,34 @@ pool:
 steps:
 - task: JavaToolInstaller@0
   inputs:
-    versionSpec: '17'
+    versionSpec: '17' # Ensure Java version matches your AGP requirements
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
 
-- task: Gradle@2
-  inputs:
-    workingDirectory: './AndroidStudioProject'
-    gradleWrapperFile: './AndroidStudioProject/gradlew'
-    tasks: ':watchface:bundleRelease'
-    publishJUnitResults: false
-    codeCoverageToolOption: 'None'
-    sonarQubeRunAnalysis: false
+# 1. Clear any cached build artifacts that might contain old .dex files
+- script: ./AndroidStudioProject/gradlew clean
+  displayName: 'Clean Project'
 
+# 2. Build the App bundle (AAB) or APK without running unit tests
+- task: Gradle@3
+  inputs:
+    gradleWrapperFile: './AndroidStudioProject/gradlew'
+    tasks: ':watchface:bundleRelease' # Use assembleRelease if you want APKs
+  displayName: 'Build Resource-Only Watch Face'
+
+# # 3. Copy the generated AAB/APK to the Artifact Staging Directory
 # - task: CopyFiles@2
 #   inputs:
-#     SourceFolder: '$(System.DefaultWorkingDirectory)'
-#     Contents: '**/build/outputs/bundle/release/*.aab'
+#     Contents: '**/build/outputs/**/*.aab' # Change to .apk if needed
 #     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-#     FlattenFolders: true
+#     CleanTargetFolder: true
+#     OverWrite: true
+#   displayName: 'Copy Artifacts'
+
+# # 4. Publish the artifact for deployment
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#     ArtifactName: 'drop'
+#     publishLocation: 'Container'
+#   displayName: 'Publish Artifacts'
