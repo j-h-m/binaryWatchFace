@@ -17,8 +17,11 @@ steps:
     jdkSourceOption: 'PreInstalled'
 
 # 1. Clear any cached build artifacts that might contain old .dex files
-- script: ./AndroidStudioProject/gradlew clean
-  displayName: 'Clean Project'
+- script: |
+    cd AndroidStudioProject
+    chmod +x gradlew
+    ./gradlew clean
+  displayName: 'Grant execute permission and clean project'
 
 # 2. Build the App bundle (AAB) or APK without running unit tests
 - task: Gradle@3
