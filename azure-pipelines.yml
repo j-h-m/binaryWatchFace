@@ -20,7 +20,7 @@ steps:
   inputs:
     workingDirectory: './AndroidStudioProject'
     gradleWrapperFile: './AndroidStudioProject/gradlew'
-    tasks: ':wear:bundleRelease'
+    tasks: ':watchface:bundleRelease'
     publishJUnitResults: false
     codeCoverageToolOption: 'None'
     sonarQubeRunAnalysis: false
