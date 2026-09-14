@@ -26,8 +26,7 @@ steps:
 # 2. Build the App bundle (AAB) or APK without running unit tests
 - task: Gradle@3
   inputs:
-    workingDirectory: 'AndroidStudioProject'
-    gradleWrapperFile: './gradlew'
+    gradleWrapperFile: './AndroidStudioProject/gradlew'
     tasks: 'build'
     # Optional but recommended flags to ensure it looks in the subfolder
     options: '-p AndroidStudioProject'
