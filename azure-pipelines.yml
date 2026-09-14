@@ -26,9 +26,11 @@ steps:
 # 2. Build the App bundle (AAB) or APK without running unit tests
 - task: Gradle@3
   inputs:
-    gradleWrapperFile: './AndroidStudioProject/gradlew'
-    tasks: ':watchface:bundleRelease' # Use assembleRelease if you want APKs
-  displayName: 'Build Resource-Only Watch Face'
+    workingDirectory: 'AndroidStudioProject' # Points the task to /home/vsts/work/1/s/android
+    gradleWrapperFile: 'AndroidStudioProject/gradlew' # Points to the wrapper script inside the folder
+    tasks: 'assembleRelease'
+    # Optional but recommended flags to ensure it looks in the subfolder
+    options: '-p AndroidStudioProject'
 
 # # 3. Copy the generated AAB/APK to the Artifact Staging Directory
 # - task: CopyFiles@2
