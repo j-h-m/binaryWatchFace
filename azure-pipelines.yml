@@ -18,7 +18,7 @@ steps:
 
 - task: Gradle@2
   inputs:
-    workingDirectory: ''
+    workingDirectory: './AndroidStudioProject'
     gradleWrapperFile: 'gradlew'
     tasks: ':wear:bundleRelease'
     publishJUnitResults: false
