@@ -19,7 +19,7 @@ steps:
 - task: Gradle@2
   inputs:
     workingDirectory: './AndroidStudioProject'
-    gradleWrapperFile: 'gradlew'
+    gradleWrapperFile: './AndroidStudioProject/gradlew'
     tasks: ':wear:bundleRelease'
     publishJUnitResults: false
     codeCoverageToolOption: 'None'
