@@ -27,7 +27,7 @@ steps:
 - task: Gradle@3
   inputs:
     workingDirectory: 'AndroidStudioProject' # Points the task to /home/vsts/work/1/s/android
-    gradleWrapperFile: 'AndroidStudioProject/gradlew' # Points to the wrapper script inside the folder
+    gradleWrapperFile: 'gradlew' # Points to the wrapper script inside the folder
     tasks: 'assembleRelease'
     # Optional but recommended flags to ensure it looks in the subfolder
     options: '-p AndroidStudioProject'
