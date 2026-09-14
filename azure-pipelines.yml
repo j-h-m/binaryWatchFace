@@ -28,7 +28,7 @@ steps:
   inputs:
     workingDirectory: 'AndroidStudioProject'
     gradleWrapperFile: './gradlew'
-    tasks: 'assembleRelease'
+    tasks: 'build'
     # Optional but recommended flags to ensure it looks in the subfolder
     options: '-p AndroidStudioProject'
     publishJUnitResults: false
