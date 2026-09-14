@@ -31,6 +31,7 @@ steps:
     tasks: 'assembleRelease'
     # Optional but recommended flags to ensure it looks in the subfolder
     options: '-p AndroidStudioProject'
+    publishJUnitResults: false
 
 # # 3. Copy the generated AAB/APK to the Artifact Staging Directory
 # - task: CopyFiles@2
