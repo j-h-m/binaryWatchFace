@@ -1,74 +1,220 @@
 <WatchFace
-    height="450"
-    width="450">
-    <Metadata
-        key="CLOCK_TYPE"
-        value="DIGITAL" />
-    <Scene>
-        <DigitalClock
-            height="450"
-            width="450"
-            x="0"
-            y="0">
-            <TimeText
-                format="hh:mm"
-                height="100"
-                width="450"
-                x="0"
-                y="175">
-                <Variant
-                    mode="AMBIENT"
-                    target="alpha"
-                    value="0" />
-                <Font
-                    color="#ffffffff"
-                    family="SYNC_TO_DEVICE"
-                    size="128" />
-            </TimeText>
-            <TimeText
-                alpha="0"
-                format="hh:mm"
-                height="100"
-                width="450"
-                x="0"
-                y="175">
-                <Variant
-                    mode="AMBIENT"
-                    target="alpha"
-                    value="255" />
-                <Font
-                    color="#ffffffff"
-                    family="SYNC_TO_DEVICE"
-                    size="128"
-                    weight="THIN" />
-            </TimeText>
-        </DigitalClock>
-        <Group
-            name="hello_world"
-            height="450"
-            width="450"
-            x="0"
-            y="0">
-            <PartText
-                height="50"
-                width="450"
-                x="0"
-                y="285">
-                <Variant
-                    mode="AMBIENT"
-                    target="alpha"
-                    value="0" />
-                <Text>
-                    <Font
-                        color="#ffffffff"
-                        family="SYNC_TO_DEVICE"
-                        size="36">
-                        <Template>%s
-                            <Parameter expression="greeting" />
-                        </Template>
-                    </Font>
-                </Text>
-            </PartText>
-        </Group>
-    </Scene>
+height="450"
+width="450">
+<Scene>
+    <!-- Example of a single binary dot layout -->
+    <Group x="65" y="125" width="80" height="80" name="binaryClock">
+        <!-- Hours first two dots -->
+        <PartDraw x="0" y="100" width="40" height="40">
+            <Ellipse x="0" y="0" width="40" height="40">
+                <Fill color="#55FF55" >
+                    <Transform
+                        target="color"
+                        value="floor([HOUR_1_24]/10) % 10 == 2 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+        <PartDraw x="0" y="150" width="40" height="40">
+            <Ellipse x="0" y="0" width="40" height="40">
+                <Fill color="#55FF55">
+                    <Transform
+                        target="color"
+                        value="floor([HOUR_1_24]/10) % 10 == 1 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+
+        <!-- Hours second four dots -->
+        <PartDraw x="25" y="0" width="40" height="40">
+            <Ellipse x="25" y="0" width="40" height="40">
+                <Fill color="#55FF55" >
+                    <Transform
+                        target="color"
+                        value="[HOUR_1_24] % 10 == 1 || [HOUR_1_24] % 10 == 3 || [HOUR_1_24] % 10 == 5 || [HOUR_1_24] % 10 == 7 || [HOUR_1_24] % 10 == 9 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+        <PartDraw x="25" y="50" width="40" height="40">
+            <Ellipse x="25" y="0" width="40" height="40">
+                <Fill color="#55FF55">
+                    <Transform
+                        target="color"
+                        value="[HOUR_1_24] % 10 == 2 || [HOUR_1_24] % 10 == 3 || [HOUR_1_24] % 10 == 6 || [HOUR_1_24] % 10 == 7 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+        <PartDraw x="25" y="100" width="40" height="40">
+            <Ellipse x="25" y="0" width="40" height="40">
+                <Fill color="#55FF55" >
+                    <Transform
+                        target="color"
+                        value="[HOUR_1_24] % 10 == 4 || [HOUR_1_24] % 10 == 6 || [HOUR_1_24] % 10 == 7 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+        <PartDraw x="25" y="150" width="40" height="40">
+            <Ellipse x="25" y="0" width="40" height="40">
+                <Fill color="#55FF55">
+                    <Transform
+                        target="color"
+                        value="[HOUR_1_24] % 10 == 8 || [HOUR_1_24] % 10 == 9 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+
+        <!-- Minutes first three dots -->
+        <PartDraw x="50" y="150" width="40" height="40">
+            <Ellipse x="50" y="0" width="40" height="40">
+                <Fill color="#55FF55" >
+                    <Transform
+                        target="color"
+                        value="floor([MINUTE]/10) == 1 || floor([MINUTE]/10) == 3 || floor([MINUTE]/10) == 5 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+        <PartDraw x="50" y="100" width="40" height="40">
+            <Ellipse x="50" y="0" width="40" height="40">
+                <Fill color="#55FF55">
+                    <Transform
+                        target="color"
+                        value="floor([MINUTE]/10) == 2 || floor([MINUTE]/10) == 3 || floor([MINUTE]/10) == 6 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+        <PartDraw x="50" y="50" width="40" height="40">
+            <Ellipse x="50" y="0" width="40" height="40">
+                <Fill color="#55FF55">
+                    <Transform
+                        target="color"
+                        value="floor([MINUTE]/10) == 4 || floor([MINUTE]/10) == 5 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+
+        <!-- Minutes second four dots -->
+        <PartDraw x="75" y="150" width="40" height="40">
+            <Ellipse x="75" y="0" width="40" height="40">
+                <Fill color="#55FF55" >
+                    <Transform
+                        target="color"
+                        value="[MINUTE] % 10 == 1 || [MINUTE] % 10 == 3 || [MINUTE] % 10 == 5 || [MINUTE] % 10 == 7 || [MINUTE] % 10 == 9 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+        <PartDraw x="75" y="100" width="40" height="40">
+            <Ellipse x="75" y="0" width="40" height="40">
+                <Fill color="#55FF55">
+                    <Transform
+                        target="color"
+                        value="[MINUTE] % 10 == 2 || [MINUTE] % 10 == 3 || [MINUTE] % 10 == 6 || [MINUTE] % 10 == 7 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+        <PartDraw x="75" y="50" width="40" height="40">
+            <Ellipse x="75" y="0" width="40" height="40">
+                <Fill color="#55FF55" >
+                    <Transform
+                        target="color"
+                        value="[MINUTE] % 10 == 4 || [MINUTE] % 10 == 5 || [MINUTE] % 10 == 6 || [MINUTE] % 10 == 7 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+        <PartDraw x="75" y="0" width="40" height="40">
+            <Ellipse x="75" y="0" width="40" height="40">
+                <Fill color="#55FF55">
+                    <Transform
+                        target="color"
+                        value="[MINUTE] % 10 == 8 || [MINUTE] % 10 == 9 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+
+        <!-- Seconds first three dots -->
+        <PartDraw x="100" y="50" width="40" height="40">
+            <Ellipse x="100" y="0" width="40" height="40">
+                <Fill color="#55FF55" >
+                    <Transform
+                        target="color"
+                        value="floor([SECOND]/10) == 1 || floor([SECOND]/10) == 3 || floor([SECOND]/10) == 5 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+        <PartDraw x="100" y="100" width="40" height="40">
+            <Ellipse x="100" y="0" width="40" height="40">
+                <Fill color="#55FF55">
+                    <Transform
+                        target="color"
+                        value="floor([SECOND]/10) == 2 || floor([SECOND]/10) == 3 || floor([SECOND]/10) == 6 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+        <PartDraw x="100" y="150" width="40" height="40">
+            <Ellipse x="100" y="0" width="40" height="40">
+                <Fill color="#55FF55">
+                    <Transform
+                        target="color"
+                        value="floor([SECOND]/10) == 4 || floor([SECOND]/10) == 5 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+
+        <!-- Seconds second four dots -->
+        <PartDraw x="125" y="150" width="40" height="40">
+            <Ellipse x="125" y="0" width="40" height="40">
+                <Fill color="#55FF55" >
+                    <Transform
+                        target="color"
+                        value="[SECOND] % 10 == 1 || [SECOND] % 10 == 3 || [SECOND] % 10 == 5 || [SECOND] % 10 == 7 || [SECOND] % 10 == 9  ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+        <PartDraw x="125" y="100" width="40" height="40">
+            <Ellipse x="125" y="0" width="40" height="40">
+                <Fill color="#55FF55">
+                    <Transform
+                        target="color"
+                        value="[SECOND] % 10 == 2 || [SECOND] % 10 == 3 || [SECOND] % 10 == 6 || [SECOND] % 10 == 7 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+        <PartDraw x="125" y="50" width="40" height="40">
+            <Ellipse x="125" y="0" width="40" height="40">
+                <Fill color="#55FF55" >
+                    <Transform
+                        target="color"
+                        value="[SECOND] % 10 == 4 || [SECOND] % 10 == 5 || [SECOND] % 10 == 6 || [SECOND] % 10 == 7 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+        <PartDraw x="125" y="0" width="40" height="40">
+            <Ellipse x="125" y="0" width="40" height="40">
+                <Fill color="#55FF55">
+                    <Transform
+                        target="color"
+                        value="[SECOND] % 10 == 8 || [SECOND] % 10 == 9 ? colorRgb(85, 255, 85) : colorRgb(67, 115, 67)">
+                    </Transform>
+                </Fill>
+            </Ellipse>
+        </PartDraw>
+    </Group>
+</Scene>
 </WatchFace>
