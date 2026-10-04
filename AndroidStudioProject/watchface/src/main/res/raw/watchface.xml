@@ -2,7 +2,6 @@
 height="450"
 width="450">
 <Scene>
-    <!-- Example of a single binary dot layout -->
     <Group x="65" y="125" width="80" height="80" name="binaryClock">
         <!-- Hours first two dots -->
         <PartDraw x="0" y="100" width="40" height="40">
@@ -27,7 +26,7 @@ width="450">
         </PartDraw>
 
         <!-- Hours second four dots -->
-        <PartDraw x="25" y="0" width="40" height="40">
+        <PartDraw x="25" y="150" width="40" height="40">
             <Ellipse x="25" y="0" width="40" height="40">
                 <Fill color="#55FF55" >
                     <Transform
@@ -37,7 +36,7 @@ width="450">
                 </Fill>
             </Ellipse>
         </PartDraw>
-        <PartDraw x="25" y="50" width="40" height="40">
+        <PartDraw x="25" y="100" width="40" height="40">
             <Ellipse x="25" y="0" width="40" height="40">
                 <Fill color="#55FF55">
                     <Transform
@@ -47,7 +46,7 @@ width="450">
                 </Fill>
             </Ellipse>
         </PartDraw>
-        <PartDraw x="25" y="100" width="40" height="40">
+        <PartDraw x="25" y="50" width="40" height="40">
             <Ellipse x="25" y="0" width="40" height="40">
                 <Fill color="#55FF55" >
                     <Transform
@@ -57,7 +56,7 @@ width="450">
                 </Fill>
             </Ellipse>
         </PartDraw>
-        <PartDraw x="25" y="150" width="40" height="40">
+        <PartDraw x="25" y="0" width="40" height="40">
             <Ellipse x="25" y="0" width="40" height="40">
                 <Fill color="#55FF55">
                     <Transform
