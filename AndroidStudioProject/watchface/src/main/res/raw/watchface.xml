@@ -1,7 +1,14 @@
-<WatchFace
-height="450"
-width="450">
+<WatchFace height="450" width="450">
 <Scene>
+    <PartText x="100" y="50" width="250" height="50">
+        <Text align="CENTER">
+            <Font family="SYNC_TO_DEVICE" size="24" color="#55FF55">
+                <Template>Heart Rate: %d bpm
+                    <Parameter expression="[HEART_RATE]" />
+                </Template>
+            </Font>
+        </Text>
+    </PartText>
     <Group x="65" y="125" width="80" height="80" name="binaryClock">
         <!-- Hours first two dots -->
         <PartDraw x="0" y="100" width="40" height="40">
@@ -215,5 +222,16 @@ width="450">
             </Ellipse>
         </PartDraw>
     </Group>
+    <PartText x="100" y="325" width="250" height="50">
+        <Text align="CENTER">
+            <Font family="SYNC_TO_DEVICE" size="28" weight="NORMAL" slant="NORMAL" color="#55FF55">
+                <Template>%s, %s %s
+                    <Parameter expression="[DAY_OF_WEEK_S]"/>
+                    <Parameter expression="[MONTH_S]"/>
+                    <Parameter expression="[DAY]"/>
+                </Template>
+            </Font>
+        </Text>
+    </PartText>
 </Scene>
 </WatchFace>
