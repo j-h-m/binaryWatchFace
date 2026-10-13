@@ -4,7 +4,7 @@
         <PartText x="70" y="45" width="340" height="48">
             <Text align="CENTER">
                 <Font family="SYNC_TO_DEVICE" size="28" color="#55FF55">
-                    <Template>♥ %d BPM<Parameter expression="[HEART_RATE]" />
+                    <Template>♥ %d BPM<Parameter expression="round([HEART_RATE])" />
                     </Template>
                 </Font>
             </Text>
